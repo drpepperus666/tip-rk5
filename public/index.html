@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Любимые песни</title>
+   <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+   <div class="container">
+      <header>
+         <h1>Мои любимые песни</h1>
+         <p class="subtitle">Управляйте своим плейлистом</p>
+      </header>
+
+      <main>
+         <!-- Фильтры -->
+         <section class="filters">
+            <h2>Фильтры</h2>
+            <div class="filter-group">
+               <input type="text" id="genreFilter" placeholder="Фильтр по жанру..." class="filter-input">
+               <input type="text" id="artistFilter" placeholder="Фильтр по исполнителю..." class="filter-input">
+               <input type="number" id="yearFilter" placeholder="Фильтр по году..." class="filter-input">
+               <button id="filterBtn" class="btn btn-filter">Применить фильтры</button>
+               <button id="resetBtn" class="btn btn-reset">Сброс</button>
+            </div>
+         </section>
+
+         <!-- Форма добавления песни -->
+         <section class="add-song">
+            <h2>Добавить новую песню</h2>
+            <form id="addSongForm" class="song-form">
+               <input type="text" placeholder="Название песни" id="title" required class="form-input">
+               <input type="text" placeholder="Исполнитель" id="artist" required class="form-input">
+               <input type="text" placeholder="Альбом" id="album" required class="form-input">
+               <input type="number" placeholder="Год выпуска" id="year" required class="form-input">
+               <input type="text" placeholder="Жанр" id="genre" required class="form-input">
+               <button type="submit" class="btn btn-add">+ Добавить песню</button>
+            </form>
+         </section>
+
+         <!-- Статистика -->
+         <section class="stats">
+            <h2>Статистика</h2>
+            <div id="statsContainer" class="stats-grid">
+               <div class="stat-card">
+                  <p class="stat-label">Всего песен</p>
+                  <p class="stat-value" id="totalSongs">0</p>
+               </div>
+               <div class="stat-card">
+                  <p class="stat-label">Жанры</p>
+                  <p class="stat-value" id="genreCount">0</p>
+               </div>
+               <div class="stat-card">
+                  <p class="stat-label">Исполнители</p>
+                  <p class="stat-value" id="artistCount">0</p>
+               </div>
+               <div class="stat-card">
+                  <p class="stat-label">Годы</p>
+                  <p class="stat-value" id="yearRange">-</p>
+               </div>
+            </div>
+         </section>
+
+         <!-- Список песен -->
+         <section class="songs-list">
+            <h2>Плейлист</h2>
+            <div id="songsList" class="songs-grid">
+               <p class="loading">Загрузка песен...</p>
+            </div>
+         </section>
+      </main>
+
+   </div>
+
+   <script src="script.js"></script>
+</body>
+
+</html>

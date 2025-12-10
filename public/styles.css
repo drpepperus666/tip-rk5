@@ -1,0 +1,491 @@
+:root {
+	--primary-color: #333333;         /* тёмно-серый вместо синего */
+	--secondary-color: #555555;       /* средний серый вместо фиолетового */
+	--success-color: #4caf50;         /* оставим зелёный для успеха (можно заменить на #66bb66 → серо-зелёный, но обычно success оставляют) */
+	--danger-color: #f44336;          /* аналогично — красный для ошибок (можно заменить на #e57373 → но лучше оставить контрастным) */
+	--warning-color: #ff9800;         /* или заменить на #ffb74d → но warning тоже часто оставляют цветным */
+	/* Однако, если **строго** ч/б — заменим ВСЁ: */
+	--success-color: #66bb66;         /* смягчённый зелёный → можно заменить на #888888, но тогда теряется смысл */
+	--danger-color: #e57373;          /* смягчённый красный → или #999999 */
+	--warning-color: #ffb74d;         /* смягчённый оранжевый → или #aaaaaa */
+
+	/* Но если **полный ч/б** — используем только серые тона: */
+	--success-color: #888888;
+	--danger-color: #999999;
+	--warning-color: #aaaaaa;
+
+	--light-bg: #f5f5f5;              /* светло-серый фон */
+	--dark-text: #222222;             /* почти чёрный текст */
+	--border-color: #dddddd;          /* светло-серая граница */
+	--shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	--shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	/* Заменяем градиент на однородный светло-серый фон */
+	background: var(--light-bg);
+	color: var(--dark-text);
+	line-height: 1.6;
+	min-height: 100vh;
+	padding: 20px 0;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+header {
+	text-align: center;
+	color: var(--dark-text);
+	margin-bottom: 40px;
+	padding: 40px 20px;
+	background: white;
+	border: 1px solid var(--border-color);
+	border-radius: 12px;
+	/* Убираем backdrop-filter, так как фон теперь не полупрозрачный */
+}
+
+header h1 {
+	font-size: 2.5rem;
+	margin-bottom: 10px;
+	/* Убираем text-shadow или делаем серым */
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+	font-size: 1.1rem;
+	color: #666666;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	margin-bottom: 40px;
+}
+
+section {
+	background: white;
+	padding: 30px;
+	border-radius: 12px;
+	box-shadow: var(--shadow-lg);
+	border: 1px solid var(--border-color);
+}
+
+section h2 {
+	font-size: 1.5rem;
+	margin-bottom: 20px;
+	color: var(--primary-color);
+	border-bottom: 2px solid var(--primary-color);
+	padding-bottom: 10px;
+}
+
+/* Фильтры */
+.filters {
+	display: flex;
+	flex-direction: column;
+}
+
+.filter-group {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 15px;
+	align-items: flex-end;
+}
+
+.filter-input {
+	padding: 12px 15px;
+	border: 2px solid var(--border-color);
+	border-radius: 8px;
+	font-size: 1rem;
+	transition: all 0.3s ease;
+	background: white;
+	color: var(--dark-text);
+}
+
+.filter-input:focus {
+	outline: none;
+	border-color: var(--primary-color);
+	box-shadow: 0 0 0 3px rgba(51, 51, 51, 0.1);
+}
+
+/* Кнопки — все в серых тонах */
+.btn {
+	padding: 12px 24px;
+	border: none;
+	border-radius: 8px;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	color: white;
+}
+
+.btn-add {
+	background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+.btn-add:hover {
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-lg);
+}
+
+.btn-filter {
+	background: var(--primary-color);
+}
+
+.btn-filter:hover {
+	background: #444444;
+	transform: translateY(-2px);
+}
+
+.btn-reset {
+	background: var(--border-color);
+	color: var(--dark-text);
+}
+
+.btn-reset:hover {
+	background: #cccccc;
+}
+
+.btn-edit {
+	background: var(--warning-color);
+	color: white;
+	padding: 8px 16px;
+	font-size: 0.9rem;
+}
+
+.btn-edit:hover {
+	background: #999999;
+}
+
+.btn-delete {
+	background: var(--danger-color);
+	color: white;
+	padding: 8px 16px;
+	font-size: 0.9rem;
+}
+
+.btn-delete:hover {
+	background: #888888;
+}
+
+.btn-save {
+	background: var(--success-color);
+	color: white;
+	padding: 8px 16px;
+	font-size: 0.9rem;
+}
+
+.btn-save:hover {
+	background: #777777;
+}
+
+.btn-cancel {
+	background: var(--border-color);
+	color: var(--dark-text);
+	padding: 8px 16px;
+	font-size: 0.9rem;
+}
+
+.btn-cancel:hover {
+	background: #cccccc;
+}
+
+/* Форма */
+.song-form {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 15px;
+}
+
+.form-input {
+	padding: 12px 15px;
+	border: 2px solid var(--border-color);
+	border-radius: 8px;
+	font-size: 1rem;
+	background: white;
+	color: var(--dark-text);
+}
+
+.form-input:focus {
+	outline: none;
+	border-color: var(--primary-color);
+	box-shadow: 0 0 0 3px rgba(51, 51, 51, 0.1);
+}
+
+/* Статистика */
+.stats-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 20px;
+}
+
+.stat-card {
+	background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+	color: white;
+	padding: 25px;
+	border-radius: 12px;
+	text-align: center;
+	box-shadow: var(--shadow);
+	transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+	transform: translateY(-5px);
+}
+
+.stat-label {
+	font-size: 0.9rem;
+	opacity: 0.9;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.stat-value {
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+/* Список песен */
+.songs-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+	gap: 20px;
+}
+
+.song-card {
+	background: white;
+	border: 2px solid var(--border-color);
+	border-radius: 12px;
+	padding: 20px;
+	transition: all 0.3s ease;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	overflow: hidden;
+}
+
+.song-card::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 4px;
+	background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.song-card:hover {
+	border-color: var(--primary-color);
+	box-shadow: var(--shadow-lg);
+	transform: translateY(-5px);
+}
+
+.song-card h3 {
+	color: var(--primary-color);
+	margin-bottom: 8px;
+	font-size: 1.3rem;
+}
+
+.song-info {
+	margin: 8px 0;
+	font-size: 0.95rem;
+	color: #777777;
+}
+
+.song-info strong {
+	color: var(--dark-text);
+}
+
+.song-year {
+	background: var(--light-bg);
+	display: inline-block;
+	padding: 4px 12px;
+	border-radius: 20px;
+	font-size: 0.85rem;
+	margin-top: 10px;
+	color: var(--dark-text);
+}
+
+.song-genre {
+	background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+	color: white;
+	display: inline-block;
+	padding: 6px 14px;
+	border-radius: 20px;
+	font-size: 0.85rem;
+	margin-top: 10px;
+	margin-left: 10px;
+	font-weight: 600;
+}
+
+.song-actions {
+	display: flex;
+	gap: 10px;
+	margin-top: 15px;
+	padding-top: 15px;
+	border-top: 1px solid var(--border-color);
+}
+
+.song-actions button {
+	flex: 1;
+}
+
+/* Форма редактирования */
+.edit-form {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 10px;
+	margin-top: 15px;
+	padding-top: 15px;
+	border-top: 1px solid var(--border-color);
+}
+
+.edit-form input {
+	padding: 8px 12px;
+	border: 1px solid var(--border-color);
+	border-radius: 6px;
+	font-size: 0.9rem;
+	color: var(--dark-text);
+	background: white;
+}
+
+.edit-form .edit-actions {
+	grid-column: 1 / -1;
+	display: flex;
+	gap: 10px;
+}
+
+.loading {
+	text-align: center;
+	color: #999999;
+	font-size: 1.1rem;
+	padding: 40px;
+}
+
+.no-results {
+	text-align: center;
+	color: #999999;
+	font-size: 1.1rem;
+	padding: 40px;
+}
+
+/* Footer */
+footer {
+	text-align: center;
+	color: var(--dark-text);
+	padding: 20px;
+	background: var(--light-bg);
+	border: 1px solid var(--border-color);
+	border-radius: 12px;
+}
+
+footer p {
+	margin: 0;
+}
+
+.btn-edit:hover {
+	background: black;
+	color: white;
+}
+
+.btn-delete:hover {
+	background: black;
+	color: white;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+	header h1 {
+		font-size: 2rem;
+	}
+
+	.filter-group {
+		grid-template-columns: 1fr;
+	}
+
+	.song-form {
+		grid-template-columns: 1fr;
+	}
+
+	.songs-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.edit-form {
+		grid-template-columns: 1fr;
+	}
+
+	.stats-grid {
+		grid-template-columns: 1fr;
+	}
+
+	section {
+		padding: 20px;
+	}
+
+	header {
+		padding: 30px 20px;
+	}
+}
+
+/* Анимации */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.song-card {
+	animation: fadeIn 0.3s ease;
+}
+
+/* Уведомления */
+.notification {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	padding: 16px 24px;
+	border-radius: 8px;
+	color: white;
+	font-weight: 600;
+	z-index: 1000;
+	animation: slideIn 0.3s ease;
+}
+
+.notification.success {
+	background: var(--success-color);
+}
+
+.notification.error {
+	background: var(--danger-color);
+}
+
+@keyframes slideIn {
+	from {
+		transform: translateX(400px);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
